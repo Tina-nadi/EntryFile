@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            font-size: medium;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: brown;">1- list of user information using jQuery , AJAX , Json file </h1>
+    <hr>
+    <li>Step One : Make An AJAX Request  And Send The Request To json file(jQuery link :script src="https://code.jquery.com/jquery-3.6.0.min.js" )</li>
+    <pre>
+        <code>
+            $(document).ready(function() {
+                function retrieveData() {
+                    $.ajax({
+                        type: 'GET',
+                        url: <b>'users.json',</b>
+                        dataType: 'json',
+                        success: function(data) {
+                            <b>//Display the result if the operation was successful</b>
+                            <!-- console.log(data);
+                            $('#user-data').html('');
+                            var table = '<table>';
+                            table += '<tr><th>Name</th><th>Phone Number</th><th>Education</th></tr>';
+                            $.each(data, function(index, user) {
+                                table += '<tr>';
+                                table += '<td>' + user.userName + '</td>';
+                                table += '<td>' + user.phoneNumber + '</td>';
+                                table += '<td>' + user.education + '</td>';
+                                table += '</tr>';
+                            });
+                            table += '</table>';
+                            $('#user-data').append(table); -->
+                        },
+                        error: function(xhr, status, error) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }
+                retrieveData();
+                setInterval(retrieveData, 2000);
+            });
+        </code>
+    </pre>
+    <li>Step Two : Display the result</li>
+    <pre>
+        <code>
+            success: function(data) {
+                 console.log(data);
+                $('#user-data').html('');
+                var table = '<table>';
+                table += '<tr><th>Name</th><th>Phone Number</th><th>Education</th></tr>';
+                $.each(data, function(index, user) {
+                    table += '<tr>';
+                    table += '<td>' + user.userName + '</td>';
+                    table += '<td>' + user.phoneNumber + '</td>';
+                    table += '<td>' + user.education + '</td>';
+                    table += '</tr>';
+                });
+                table += '</table>';
+                $('#user-data').append(table);
+            },
+        </code>
+    </pre>
+    <li>Step Three : meke a json file and insert users information when they sing in </li>
+    <pre>
+        <code>
+            $json_file = 'users.json';
+            $json_data = json_decode(file_get_contents($json_file), true);
+            $json_data[] = array(
+                'userName' => $userName,
+                'phoneNumber' => $phoneNumber,
+                'password' => $password,
+                'education' => $education
+            );
+            $json_data = json_encode($json_data, JSON_PRETTY_PRINT);
+            file_put_contents($json_file, $json_data);
+        </code>
+    </pre>
+    <p style="color: rgb(11, 209, 41);">the page looks like this:</p> <br>
+    <img width="200px" src="https://i.postimg.cc/FRbCzT7H/userList.png" alt="">
+<hr>
+<b style="color: brown;">2- Add a Persion Date Calender Using kamaDatepicker library </b>
+<hr>
+<li>Step One : Link js and css File and  Display the Calender </li>
+<pre>
+    <code>
+        input type="text" name="birthDay" id="date_input" placeholder="enter your birthdate"
+
+        script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+        script src="kamadatepicker.min.js"
+         
+        kamaDatepicker('date_input');
+    </code>
+</pre>
+<p style="color: rgb(11, 209, 41);">the page looks like this:</p> <br>
+    <img width="200px" src="https://i.postimg.cc/SRDZ7jL0/calender.png" alt="">
+<hr>
+<b style="color: brown;">3-APIs In PHP</b>
+<hr>
+<p>They are divided into several types based on their architecture and mode of operation ,<b> RESTful API (Representational State of Resource),GraphQL API , SOAP API (Simple Object Access Protocol), gRPC API ,WebSocket API</b>. <br><br>
+    <hr>
+- <b>Request and Response</b> <br>
+An API request is made by a client application to a server to retrieve, create, update, or delete data. The request typically includes the following components:
+<li>HTTP Method(common method : GET , POST , PUT , DELETE)</li>
+<li>URL (Endpoint)</li>
+<li>Headers</li> <br>
+An API response is the server’s reply to an API request :
+<li>Status Code (like 200 means ok ..)</li>
+<li>Headers</li>
+<li>Body</li>
+<hr>
+- <b>End Point</b> in API?
+In API, an End Point (or Endpoint) is a unique address that identifies a specific service or resource on a server. End Points allow clients to interact with the server and perform various operations.<br> <br>
+Examples of End Points:<br>
+
+GET /users: Retrieve a list of users <br>
+POST /users: Create a new user<br>
+GET /users/123: Retrieve information about a user with ID 123<br>
+PUT /users/123: Update information about a user with ID 123<br>
+DELETE /users/123: Delete a user with ID 123 <br>
+<hr>
+<h1>-Format Files</h1> <br>
+format files refer to the data formats used for structuring the data being exchanged between clients and servers,some of the most common formats used in APIs:
+<li>JSON (JavaScript Object Notation):</li>
+<pre>
+    <code>
+        {  
+            "name": "John Doe",  
+            "email": "john.doe@example.com",  
+            "age": 30,  
+            "isActive": true  
+        }
+    </code>
+</pre>
+<li>XML (eXtensible Markup Language):</li>
+<hr>
+<h1>-Methods or Technologies</h1>
+there are several methods or technologies used to send requests to and receive responses from a server:
+
+ </p>
+<li>XMLHttpRequest : </li>
+<pre>
+    <code>
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'https://example.com/users', true);
+        xhr.onload = function() {
+          if (xhr.status === 200) {
+            console.log(xhr.responseText);
+          }
+        };
+        xhr.send();
+    </code>
+</pre>
+<li>Fetch : </li>
+<pre>
+    <code>
+        fetch('https://example.com/users')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+    </code>
+</pre>
+<li>Axios : </li>
+<pre>
+    <code>
+        const axios = require('axios');
+       axios.get('https://example.com/users')
+      .then(response => console.log(response.data))
+      .catch(error => console.error(error));
+    </code>
+</pre>
+<li>Ajax : (wich I used ) </li>
+<pre>
+    <code>
+        $.ajax({
+            type: 'GET',
+            url: 'https://example.com/users',
+            success: function(data) {
+              console.log(data);
+            },
+            error: function(xhr, status, error) {
+              console.error(error);
+            }
+          });
+    </code>
+</pre>
+
+
+<b>Files Links (click to download)</b>
+<li><a href="entryForm.php" download="desired-file-name.ext">Sing In Form</a>
+<li><a href="entryRegister.php" download="desired-file-name.ext">Sing In Form Register</a>
+<li><a href="entryFormSingUp.php" download="desired-file-name.ext">Sing Up Form</a></li>
+<li><a href="EntryRegisterSingUp.php" download="desired-file-name.ext">Sing Up Form Register</a></li>
+<li><a href="showUserList.html" download="desired-file-name.ext">User List</a></li>
+</li>
+</body>
+</html>
