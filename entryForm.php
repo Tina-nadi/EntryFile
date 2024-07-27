@@ -34,7 +34,7 @@
 <body>
     <div class="container row" >
         <h1>Login Form</h1>
-        <form method="post" class="col-4" action="entryRegister.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;" >
+        <form method="post" class="col-4" action="entryRegister.php>
             <input type="text" name="userName" placeholder="enter your name:">
             <input type="text" name="phoneNumber" placeholder="enter your mobile number:">
             <input type="password" name="password" placeholder="enter your password">
