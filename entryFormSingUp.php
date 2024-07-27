@@ -32,7 +32,7 @@
 <body>
 <div class="container row" >
         <h1>Login Form</h1>
-        <form method="post" class="col-4" action="entryRegisterSingUp.php/&quot;&gt;&lt;script&gt;alert('hacked')&lt;/script&gt;" >
+        <form method="post" class="col-4" action="entryRegisterSingUp.php >
             <input type="text" name="userName" placeholder="enter your name:">
             <input type="password" name="password" placeholder="enter your password">
             <input type="submit" class="btn btn-secondary" >
