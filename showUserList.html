@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retrieve User Data</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="user-data"></div>
+
+    <script>
+     $(document).ready(function() {
+    function retrieveData() {
+        $.ajax({
+            type: 'GET',
+            url: 'users.json',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                $('#user-data').html('');
+                var table = '<table style="border-collapse: collapse;">';
+                table += '<tr><th style="border: 1px solid #ddd;">Name</th><th style="border: 1px solid #ddd;">Phone Number</th><th style="border: 1px solid #ddd;">Education</th></tr>';
+                $.each(data, function(index, user) {
+                    table += '<tr>';
+                    table += '<td style="border: 1px solid #ddd;">' + user.userName + '</td>';
+                    table += '<td style="border: 1px solid #ddd;">' + user.phoneNumber + '</td>';
+                    table += '<td style="border: 1px solid #ddd;">' + user.education + '</td>';
+                    table += '</tr>';
+                });
+                table += '</table>';
+                $('#user-data').append(table);
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+            }
+        });
+    }
+
+    // Call the function every second to retrieve data
+    setInterval(retrieveData, 1000);
+});
+
+    </script>
+</body>
+</html>
